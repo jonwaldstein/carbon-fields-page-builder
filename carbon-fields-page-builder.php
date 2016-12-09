@@ -7,9 +7,7 @@
  * Version: 				0.0.1
  * Author: 					Jon Waldstein
  * Author URI: 				http://www.jonwaldsteinweb.com
- * Bitbucket Plugin URI:	https://Jpwaldstein@bitbucketorg/Jpwaldstein/carbon-fields-page-builder.git
- * Bitbucket Branch:     	master
- * Release Asset: 			true
+ * Plugin URI:	            https://Jpwaldstein@bitbucketorg/Jpwaldstein/carbon-fields-page-builder.git
  */
 
 
