@@ -18,6 +18,7 @@ $cf_page_builder_includes = array(
   'lib/cf_fields.php',			// Carbon Fields
   'lib/cf_functions.php',		// Carbon Fields Functions
   'lib/cf_view.php',			// View Function
+  'lib/cf_fallback.php',		// Fallback functions
 );
 
 foreach($cf_page_builder_includes as $file){
