@@ -15,7 +15,6 @@ function carbon_print_layout($layout) {//view fields
 				<?php if (!empty($columns)): ?>
 					<?php foreach($columns as $column ): ?>
 						<?php $max_columns = count($columns);
-							$col_html = ''; 
 							if($max_columns === 5) {
 								$col_class = 15;
 							} else {
