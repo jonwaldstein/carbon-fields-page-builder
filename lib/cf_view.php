@@ -32,6 +32,9 @@ function carbon_print_layout($layout) {//view fields
 									<?php if ($content_block['content_type'] === 'image'): ?>
 										<img src="<?= $content_block['content_image']; ?>" alt=""/>
 									<?php endif; ?>
+									<?php if ($content_block['content_type'] === 'accordion'): ?>
+										<?php include('partials/accordion.php'); ?>
+									<?php endif; ?>
 								<?php endforeach; ?>
 							<?php endif; ?>
 						</div>

@@ -1,5 +1,5 @@
 <?php
-
+namespace Zgm\PageBuilder;
 /*
  * Plugin Name: 			Carbon Fields Page Builder
  * Plugin URI: 				https://bitbucket.org/Jpwaldstein/carbon-fields-page-builder
@@ -10,15 +10,16 @@
  * Bitbucket Plugin URI:	https://Jpwaldstein@bitbucketorg/Jpwaldstein/carbon-fields-page-builder.git
  */
 
-
-define("CARBON_FIELDS_PAGE_BUILDER_URL", plugin_dir_url( __FILE__ ));
+define('CF_PAGE_BUILDER_PATH', plugin_dir_path(__FILE__));
+define('CF_PAGE_BUILDER_FOLDER', __FILE__);
 
 $cf_page_builder_includes = array(
-  'lib/init.php',				// initialize
+  'lib/init.php',				// Initialize
+  'lib/setup.php',			// Some Settings
   'lib/cf_fields.php',			// Carbon Fields
   'lib/cf_functions.php',		// Carbon Fields Functions
   'lib/cf_view.php',			// View Function
-  'lib/cf_fallback.php',		// Fallback functions
+  //'lib/cf_fallback.php',		// Fallback functions
 );
 
 foreach($cf_page_builder_includes as $file){

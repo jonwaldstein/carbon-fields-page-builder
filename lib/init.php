@@ -1,11 +1,10 @@
 <?php
 
-
 // confirn Carbon Fields is installed
-add_action('carbon_register_fields', 'crb_register_custom_fields');
+/*add_action('carbon_register_fields', 'crb_register_custom_fields');
 function crb_register_custom_fields() {
     include_once(dirname(__FILE__) . '/cf_fields.php');
-}
+}*/
 
 add_action( 'admin_init', 'cf_page_builder_plugin' );
 function cf_page_builder_plugin() {

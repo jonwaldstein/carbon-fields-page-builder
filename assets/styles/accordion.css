@@ -1,0 +1,49 @@
+.plus,
+.minus {
+  position: absolute;
+  right: 5%;
+  -webkit-transition: .3s all ease-out;
+  -moz-transition: .3s all ease-out;
+  -ms-transition: .3s all ease-out;
+  -o-transition: .3s all ease-out;
+  transition: .3s all ease-out;
+}
+
+.carbon-panel a .plus, .carbon-panel a .minus {
+  color: currentColor;
+}
+.carbon-panel a:hover .plus, .carbon-panel a:hover .minus {
+  color: currentColor;
+}
+.carbon-panel > a[aria-expanded="false"] .plus {
+  opacity: 1;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+.carbon-panel > a[aria-expanded="false"] .minus {
+  opacity: 0;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+.carbon-panel > a[aria-expanded="true"] .minus {
+  opacity: 1;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+.carbon-panel > a[aria-expanded="true"] .plus {
+  opacity: 0;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
