@@ -1,7 +1,7 @@
 <?php
 function carbon_print_layout($layout) {//view fields
 	?>
-	<div class="section <?= $layout['full_width_section'] ? 'container-fluid' : 'container'; ?> <?= $layout['content_contained'] ? 'content-contained' : null; ?>  <?= $layout['mobile_center_text'] ? 'mobile-center-text' : null; ?> <?= $layout['mobile_reverse_columns'] ? 'mobile-reverse-columns' : null; ?> <?= $layout['section_class']; ?>" style="<?=bg_image($layout['section_background_image'])?>">
+	<div class="section <?= $layout['full_width_section'] ? 'container-fluid' : 'container'; ?> <?= $layout['content_contained'] ? 'content-contained' : null; ?>  <?= $layout['mobile_center_text'] ? 'mobile-center-text' : null; ?> <?= $layout['section_class']; ?>" style="<?=bg_image($layout['section_background_image'])?>">
 		<?php if ( $layout['_type'] === '_dynamic_section' ): ?>
 				<?php if ( $layout['section_heading'] ): ?>
 					<div class="row row-heading">
@@ -10,7 +10,7 @@ function carbon_print_layout($layout) {//view fields
 						</div>
 					</div>
 				<?php endif; ?>
-			<div class="row flexible-content">
+			<div class="row flexible-content <?=$layout['vertical_align'] ? 'flex-vertical-align' : null;?> <?= $layout['mobile_reverse_columns'] ? 'mobile-reverse-columns' : null; ?>">
 				<?php $columns = $layout['columns']; ?>
 				<?php if (!empty($columns)): ?>
 					<?php foreach($columns as $column ): ?>

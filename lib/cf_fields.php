@@ -17,6 +17,7 @@ function carbon_page_builder_fields_setup() {
                 Field::make("separator", "section_settings"),
                 Field::make('checkbox', 'full_width_section')->set_width(20),
                 Field::make('checkbox', 'content_contained')->set_width(20),
+                Field::make('checkbox', 'vertical_align')->set_width(20),
                 Field::make('checkbox', 'mobile_center_text')->set_width(20),
                 Field::make('checkbox', 'mobile_reverse_columns')->set_width(20),
                 Field::make('text', 'section_class')->set_width(50),
