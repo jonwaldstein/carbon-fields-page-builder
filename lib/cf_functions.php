@@ -2,6 +2,19 @@
 function carbon_parse_shortcodes($meta_string){//for use of shortcodes in rich text
 	return apply_filters('the_content', $meta_string);
 }
+function heading_alignment($field){
+	switch ($field) {
+		case 'center':
+			echo 'text-center';
+			break;
+		case 'left':
+			echo 'text-left';
+			break;
+		case 'right':
+			echo 'text-right';
+			break;
+	}
+}
 function bg_image($bg){ //background image function
 	if ($bg){
 		$background_image = "background:url('".$bg."');background-size:cover;background-repeat:no-repeat;background-position: center center;";

@@ -5,8 +5,8 @@ function carbon_print_layout($layout) {//view fields
 		<?php if ( $layout['_type'] === '_dynamic_section' ): ?>
 				<?php if ( $layout['section_heading'] ): ?>
 					<div class="row row-heading">
-						<div class="col-sm-12 text-center">
-							<h3><?= $layout['section_heading']; ?></h3>
+						<div class="col-sm-12 <?=heading_alignment($layout['content_align']);?>">
+							<?='<'.$layout['heading_tag'].'>';?><?= $layout['section_heading']; ?><?='</'.$layout['heading_tag'].'>';?>
 						</div>
 					</div>
 				<?php endif; ?>
