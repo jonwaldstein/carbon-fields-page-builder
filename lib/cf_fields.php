@@ -63,6 +63,7 @@ function carbon_page_builder_fields_setup() {
                             'text' => 'Text',
                             'image' => 'Image',
                             'accordion' => 'Accordion',
+                            'form' => 'Gravity Form',
                         )),
                           Field::make( 'rich_text', 'content_text' )
                             ->set_conditional_logic(array(
@@ -79,6 +80,15 @@ function carbon_page_builder_fields_setup() {
                                  array(
                                     'field' => 'content_type',
                                     'value' => 'image', 
+                                    'compare' => '=', 
+                                ),
+                            )),
+                        Field::make("gravity_form", "crb_gravity_form", "Select a Form")
+                        ->set_conditional_logic(array(
+                                'relation' => 'OR',
+                                 array(
+                                    'field' => 'content_type',
+                                    'value' => 'form', 
                                     'compare' => '=', 
                                 ),
                             )),
