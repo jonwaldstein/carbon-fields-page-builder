@@ -59,13 +59,14 @@ function carbon_page_builder_fields_setup() {
                      ))
                      ->add_fields( 'Content Block', array(
                         Field::make("select", "content_type")
-                         ->add_options(array(
-                            'text' => 'Text',
-                            'image' => 'Image',
-                            'accordion' => 'Accordion',
-                            'form' => 'Gravity Form',
-                        )),
-                          Field::make( 'rich_text', 'content_text' )
+                            ->add_options(array(
+                                'text' => 'Text',
+                                'image' => 'Image',
+                                'accordion' => 'Accordion',
+                                'form' => 'Gravity Form',
+                                'map' => 'Google Map',
+                            )),
+                        Field::make( 'rich_text', 'content_text' )
                             ->set_conditional_logic(array(
                                 'relation' => 'OR',
                                  array(
@@ -84,11 +85,20 @@ function carbon_page_builder_fields_setup() {
                                 ),
                             )),
                         Field::make("gravity_form", "crb_gravity_form", "Select a Form")
-                        ->set_conditional_logic(array(
+                            ->set_conditional_logic(array(
                                 'relation' => 'OR',
                                  array(
                                     'field' => 'content_type',
                                     'value' => 'form', 
+                                    'compare' => '=', 
+                                ),
+                            )),
+                        Field::make('map', 'crb_company_location', 'Location')
+                            ->set_conditional_logic(array(
+                                'relation' => 'OR',
+                                 array(
+                                    'field' => 'content_type',
+                                    'value' => 'map', 
                                     'compare' => '=', 
                                 ),
                             )),
@@ -109,8 +119,18 @@ function carbon_page_builder_fields_setup() {
                                     'compare' => '=', 
                                 ),
                             )),
-                    ))  
-                ))
-            )),
-    )); 
-}
+                    ))//Content Block Complex--End  
+                ))//Column Complex--End
+            )),//Dynamic Section Complex--End
+    ));//Page Builder Fields Array--End
+    Container::make('theme_options', 'CF Page Builder')//Map Settings
+        ->add_fields( array(
+            //Field::make('text', 'api_key', 'Maps Api Key')
+        ));
+    Container::make('theme_options', 'Map Settings')//Map Settings
+        ->set_page_parent('CF Page Builder')
+        ->add_fields( array(
+            Field::make('text', 'gmap_api_key', 'Maps Api Key'),
+            Field::make('image', 'gmap_custom_marker', 'Maps Custom Marker')->set_value_type( 'url' ),
+        ));
+}//Fields Function--End

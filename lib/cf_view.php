@@ -37,6 +37,9 @@ function carbon_print_layout($layout) {//view fields
 									<?php if ($content_block['content_type'] === 'form'): ?>
 										<?php $id = $content_block['crb_gravity_form']; echo do_shortcode('[gravityform title="false" description="false" id='.$id.']');?>
 									<?php endif; ?>
+									<?php if ($content_block['content_type'] === 'map'): ?>
+										<?php include('partials/map.php'); ?>
+									<?php endif; ?>
 								<?php endforeach; ?>
 							<?php endif; ?>
 						</div>
