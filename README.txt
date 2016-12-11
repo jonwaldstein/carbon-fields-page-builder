@@ -1,5 +1,5 @@
-* Currently calling this function within the Plugin
+* In theme options (CF_Page_Builder) there is an option to enable output from within the plugin
 
-//In your theme, call this function on the pages you want the builder to run on
+Otherwise, in your theme, call this function on the pages you want the builder to run on
 
-<?php carbon_display_page_builder(); ?>
+carbon_display_page_builder();
