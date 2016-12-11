@@ -94,6 +94,24 @@ function carbon_page_builder_fields_setup() {
                                     'compare' => '=', 
                                 ),
                             )),
+                        Field::make("checkbox", "crb_gravity_form_title", "Title")->set_width(50)
+                            ->set_conditional_logic(array(
+                                'relation' => 'OR',
+                                 array(
+                                    'field' => 'content_type',
+                                    'value' => 'form', 
+                                    'compare' => '=', 
+                                ),
+                            )),
+                        Field::make("checkbox", "crb_gravity_form_description", "Description")->set_width(50)
+                            ->set_conditional_logic(array(
+                                'relation' => 'OR',
+                                 array(
+                                    'field' => 'content_type',
+                                    'value' => 'form', 
+                                    'compare' => '=', 
+                                ),
+                            )),
                         Field::make('map', 'crb_company_location', 'Location')
                             ->set_conditional_logic(array(
                                 'relation' => 'OR',

@@ -23,6 +23,13 @@ function bg_image($bg){ //background image function
 		return '';
 	}
 }
+function gform_options($field){
+	if ($field === 'yes'){
+		return 'true';
+	} else{
+		return 'false';
+	}
+}
 function carbon_display_page_builder() {//call function in pages that will use this
 	if ( function_exists( 'carbon_get_the_post_meta' ) ) {
 		$layouts = carbon_get_the_post_meta( 'crb_layouts', 'complex' );
