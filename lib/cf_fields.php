@@ -65,6 +65,7 @@ function carbon_page_builder_fields_setup() {
                                 'accordion' => 'Accordion',
                                 'form' => 'Gravity Form',
                                 'map' => 'Google Map',
+                                'button' => 'Button',
                             )),
                         Field::make( 'rich_text', 'content_text' )
                             ->set_conditional_logic(array(
@@ -99,6 +100,42 @@ function carbon_page_builder_fields_setup() {
                                  array(
                                     'field' => 'content_type',
                                     'value' => 'map', 
+                                    'compare' => '=', 
+                                ),
+                            )),
+                        Field::make("color", "crb_btn_background", "Button Background Color")
+                         ->set_conditional_logic(array(
+                                'relation' => 'OR',
+                                 array(
+                                    'field' => 'content_type',
+                                    'value' => 'button', 
+                                    'compare' => '=', 
+                                ),
+                            )),
+                        Field::make('text', 'button_class')
+                            ->set_conditional_logic(array(
+                                'relation' => 'OR',
+                                 array(
+                                    'field' => 'content_type',
+                                    'value' => 'button', 
+                                    'compare' => '=', 
+                                ),
+                            )),
+                        Field::make('text', 'button_text')
+                            ->set_conditional_logic(array(
+                                'relation' => 'OR',
+                                 array(
+                                    'field' => 'content_type',
+                                    'value' => 'button', 
+                                    'compare' => '=', 
+                                ),
+                            )),
+                        Field::make('text', 'button_link')
+                            ->set_conditional_logic(array(
+                                'relation' => 'OR',
+                                 array(
+                                    'field' => 'content_type',
+                                    'value' => 'button', 
                                     'compare' => '=', 
                                 ),
                             )),
