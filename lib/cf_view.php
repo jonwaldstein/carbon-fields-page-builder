@@ -43,6 +43,9 @@ function carbon_print_layout($layout) {//view fields
 									<?php if ($content_block['content_type'] === 'button'): ?>
 										<a <?php if (!empty($content_block['crb_btn_background'])):?>style="background-color:<?=$content_block['crb_btn_background'];?>;"<?php endif; ?>class="btn <?=$content_block['button_class'];?>" href="<?=$content_block['button_link'];?>"><?=$content_block['button_text'];?></a>
 									<?php endif; ?>
+									<?php if ($content_block['content_type'] === 'query'): ?>
+										<?php include('partials/post_query.php'); ?>
+									<?php endif; ?>
 								<?php endforeach; ?>
 							<?php endif; ?>
 						</div>

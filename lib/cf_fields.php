@@ -66,6 +66,7 @@ function carbon_page_builder_fields_setup() {
                                 'form' => 'Gravity Form',
                                 'map' => 'Google Map',
                                 'button' => 'Button',
+                                'query' => 'Post Query',
                             )),
                         Field::make( 'rich_text', 'content_text' )
                             ->set_conditional_logic(array(
@@ -154,6 +155,16 @@ function carbon_page_builder_fields_setup() {
                                  array(
                                     'field' => 'content_type',
                                     'value' => 'button', 
+                                    'compare' => '=', 
+                                ),
+                            )),
+                        Field::make('relationship', 'crb_relationship')
+                        ->set_post_type('post')
+                        ->set_conditional_logic(array(
+                                'relation' => 'OR',
+                                 array(
+                                    'field' => 'content_type',
+                                    'value' => 'query', 
                                     'compare' => '=', 
                                 ),
                             )),
