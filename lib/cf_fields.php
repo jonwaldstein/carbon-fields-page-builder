@@ -180,7 +180,7 @@ function carbon_page_builder_fields_setup() {
     ));//Page Builder Fields Array--End
     Container::make('theme_options', 'CF Page Builder')//Map Settings
         ->add_fields( array(
-            //Field::make('text', 'api_key', 'Maps Api Key')
+            Field::make('checkbox', 'enable_output_from_plugin')
         ));
     Container::make('theme_options', 'Map Settings')//Map Settings
         ->set_page_parent('CF Page Builder')
