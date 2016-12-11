@@ -1,7 +1,9 @@
 <?php
 add_action( 'carbon_map_api_key', 'crb_get_gmaps_api_key' );
 function crb_get_gmaps_api_key( $current_key ) {
-    return carbon_get_theme_option('gmap_api_key');
+	if ( function_exists( 'carbon_get_theme_option' ) ) {
+    	return carbon_get_theme_option('gmap_api_key');
+	}
 }
 function carbon_resources() {
 	wp_enqueue_style('cf-page-builder-accordion', plugins_url('/assets/styles/accordion.css', CF_PAGE_BUILDER_FOLDER), array());

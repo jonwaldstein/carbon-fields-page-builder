@@ -12,7 +12,9 @@ function filter_the_content_in_the_main_loop( $content ) {
  
     // Check if we're inside the main loop in a single post page.
     if ( is_page() && in_the_loop() && is_main_query() ) {
+    	if ( function_exists( 'carbon_display_page_builder' ) ) {
     		carbon_display_page_builder();
+    	}
     }
  
     return $content;

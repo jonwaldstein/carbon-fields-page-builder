@@ -1,5 +1,5 @@
 <?php
-namespace Zgm\PageBuilder;
+
 /*
  * Plugin Name: 			Carbon Fields Page Builder
  * Plugin URI: 				https://bitbucket.org/Jpwaldstein/carbon-fields-page-builder
@@ -23,6 +23,7 @@ $cf_page_builder_includes = array(
 );
 
 foreach($cf_page_builder_includes as $file){
-  require_once $file;
+	require_once $file;
 }
+
 unset($file, $filepath);

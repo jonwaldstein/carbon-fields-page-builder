@@ -24,7 +24,9 @@ function bg_image($bg){ //background image function
 	}
 }
 function carbon_display_page_builder() {//call function in pages that will use this
-	$layouts = carbon_get_the_post_meta( 'crb_layouts', 'complex' );
+	if ( function_exists( 'carbon_get_the_post_meta' ) ) {
+		$layouts = carbon_get_the_post_meta( 'crb_layouts', 'complex' );
+	}
 	if (!empty($layouts)){
 		foreach ( $layouts as $layout ) {
 			$function_name = 'carbon_print_layout';
