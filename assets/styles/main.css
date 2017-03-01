@@ -1,3 +1,5 @@
+/*Accordion*/
+
 .plus,
 .minus {
   position: absolute;
@@ -46,4 +48,40 @@
   -ms-transform: rotate(90deg);
   -o-transform: rotate(90deg);
   transform: rotate(90deg);
+}
+
+
+/*Map*/
+
+.gmap{
+  min-height: 500px;
+  max-width: 100%;
+}
+
+/*Utility*/
+
+@media(min-width:767px){
+  .flex-vertical-align {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: row;
+              flex-direction: row;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+  }
+}
+@media(max-width:767px){
+  .mobile-reverse-columns {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: reverse;
+          -ms-flex-direction: column-reverse;
+              flex-direction: column-reverse;
+  }
 }

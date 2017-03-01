@@ -2,8 +2,10 @@
 use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 use Carbon_Fields\Field\Complex_Field;
+
 add_action('carbon_register_fields', 'carbon_page_builder_fields_setup');
 function carbon_page_builder_fields_setup() {
+
     Container::make( 'post_meta', 'Page Builder' )//PAGE BUILDER FIELDS
         ->show_on_post_type('page')
         ->add_fields( array(
@@ -191,12 +193,12 @@ function carbon_page_builder_fields_setup() {
     ));//Page Builder Fields Array--End
     Container::make('theme_options', 'CF Page Builder')//Map Settings
         ->add_fields( array(
-            Field::make('checkbox', 'enable_output_from_plugin')
-        ));
-    Container::make('theme_options', 'Map Settings')//Map Settings
-        ->set_page_parent('CF Page Builder')
-        ->add_fields( array(
+            Field::make('checkbox', 'enable_output_from_plugin'),
+            Field::make('checkbox', 'add_plugin_default_css'),
+            Field::make('checkbox', 'add_bootstrap_cdn'),
+            Field::make('checkbox', 'add_google_maps_api_key'),
             Field::make('text', 'gmap_api_key', 'Maps Api Key'),
             Field::make('image', 'gmap_custom_marker', 'Maps Custom Marker')->set_value_type( 'url' ),
         ));
+        
 }//Fields Function--End

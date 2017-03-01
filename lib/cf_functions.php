@@ -1,8 +1,8 @@
 <?php
-function carbon_parse_shortcodes($meta_string){//for use of shortcodes in rich text
+function cfpb_carbon_parse_shortcodes($meta_string){//for use of shortcodes in rich text
 	return apply_filters('the_content', $meta_string);
 }
-function heading_alignment($field){
+function cfpb_heading_alignment($field){
 	switch ($field) {
 		case 'center':
 			echo 'text-center';
@@ -15,7 +15,7 @@ function heading_alignment($field){
 			break;
 	}
 }
-function bg_image($bg){ //background image function
+function cfpb_bg_image($bg){ //background image function
 	if ($bg){
 		$background_image = "background:url('".$bg."');background-size:cover;background-repeat:no-repeat;background-position: center center;";
     	return $background_image;
@@ -23,7 +23,7 @@ function bg_image($bg){ //background image function
 		return '';
 	}
 }
-function gform_options($field){
+function cfpb_gform_options($field){
 	if ($field === 'yes'){
 		return 'true';
 	} else{
