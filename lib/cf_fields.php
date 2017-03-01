@@ -69,6 +69,7 @@ function carbon_page_builder_fields_setup() {
                                 'map' => 'Google Map',
                                 'button' => 'Button',
                                 'query' => 'Post Query',
+                                'timeline' => 'Timeline',
                             )),
                         Field::make( 'rich_text', 'content_text' )
                             ->set_conditional_logic(array(
@@ -170,6 +171,23 @@ function carbon_page_builder_fields_setup() {
                                     'compare' => '=', 
                                 ),
                             )),
+                        Field::make( 'complex', 'timeline' )
+                            ->setup_labels( array(
+                                'plural_name' => 'Timeline',
+                                'singular_name' => 'Event'
+                            ))
+                            ->add_fields(array(
+                                Field::make('text', 'title'),
+                                Field::make('rich_text', 'content'),
+                            )) 
+                            ->set_conditional_logic(array(
+                                'relation' => 'OR',
+                                 array(
+                                    'field' => 'content_type',
+                                    'value' => 'timeline', 
+                                    'compare' => '=', 
+                                ),
+                            )),
                          Field::make( 'complex', 'accordion' )
                             ->setup_labels( array(
                                 'plural_name' => 'Accorions',
@@ -200,5 +218,5 @@ function carbon_page_builder_fields_setup() {
             Field::make('text', 'gmap_api_key', 'Maps Api Key'),
             Field::make('image', 'gmap_custom_marker', 'Maps Custom Marker')->set_value_type( 'url' ),
         ));
-        
+
 }//Fields Function--End

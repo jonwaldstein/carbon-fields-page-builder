@@ -9,13 +9,16 @@ if (!empty($accordions )): ?>
 				<a class="text-decoration-none text-decoration-none-hover" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-<?= $accordion_id; ?>" aria-expanded="false" aria-controls="collapseOne">
 					<div class="panel-heading" role="tab" id="headingOne">
 						<h4 class="panel-title">				        
-					        <?= $accordion['title']; ?>	<span class="alignright"><span class="plus"><i class="fa fa-plus"></i></span><span class="minus"><i class="fa fa-minus"></i></span></span>			        
+					        <?= $accordion['title']; ?>				        
 				      	</h4>
+				      	<span class="alignright">
+				      		<i class="fa fa-plus plus"></i><i class="fa fa-minus minus"></i>
+				      	</span>
 				    </div>
 			    </a>
 			    <div id="collapse-<?= $accordion_id; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 					<div class="panel-body">
-						<?= $accordion['content']; ?>		        
+						<?= cfpb_carbon_parse_shortcodes($accordion['content']); ?>		        
 					</div>
 			    </div>
 			</div><!--panel-->

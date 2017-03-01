@@ -46,6 +46,9 @@ function carbon_print_layout($layout) {//view fields
 									<?php if ($content_block['content_type'] === 'query'): ?>
 										<?php include('partials/post_query.php'); ?>
 									<?php endif; ?>
+									<?php if ($content_block['content_type'] === 'timeline'): ?>
+										<?php include('partials/timeline.php'); ?>
+									<?php endif; ?>
 								<?php endforeach; ?>
 							<?php endif; ?>
 						</div>
