@@ -26,7 +26,7 @@ function carbon_page_builder_fields_setup() {
                 Field::make('image', 'section_background_image')->set_value_type( 'url' )->set_width(50),
                 Field::make("separator", "section_heading_seperator"),
                 Field::make('text', 'section_heading'),
-                Field::make("select", "heading_tag", "Heading Tag")
+                Field::make("select", "section_heading_tag", "Heading Tag")
                 ->set_width(50)
                 ->add_options(array(
                     'h1' => 'h1',
@@ -40,9 +40,9 @@ function carbon_page_builder_fields_setup() {
                 Field::make("select", "content_align", "Heading Alignment")
                 ->set_width(50)
                 ->add_options(array(
-                    'left' => 'Left',
-                    'center' => 'Center',
-                    'right' => 'Right',
+                    'text-left' => 'Left',
+                    'text-center' => 'Center',
+                    'text-right' => 'Right',
                 )),
                 Field::make("separator", 'columns_seperator',"Columns"),
                 Field::make( 'complex', 'columns' )
@@ -54,6 +54,7 @@ function carbon_page_builder_fields_setup() {
                  ))   
                 ->add_fields( 'Column', array(
                     Field::make('text', 'column_class'),
+                    Field::make('checkbox', 'column_class_override')->set_option_value('yes'),
                     Field::make( 'complex', 'column_content' )
                      ->setup_labels( array(
                         'plural_name' => 'Content',
@@ -63,16 +64,16 @@ function carbon_page_builder_fields_setup() {
                         Field::make("select", "content_type")
                             ->add_options(array(
                                 'text' => 'Text',
+                                'textarea' => 'Textarea',
+                                'heading' => 'Heading',
                                 'image' => 'Image',
+                                'button' => 'Button',
+                                'space' => 'Space',
                                 'accordion' => 'Accordion',
                                 'form' => 'Gravity Form',
                                 'map' => 'Google Map',
-                                'button' => 'Button',
                                 'query' => 'Post Query',
-                                'timeline' => 'Timeline',
-                                'space' => 'Space',
-                                'textarea' => 'Textarea',
-                                'heading' => 'Heading'
+                                'timeline' => 'Timeline'
                             )),
                         Field::make( 'rich_text', 'content_text' )
                             ->set_conditional_logic(array(
@@ -157,7 +158,12 @@ function carbon_page_builder_fields_setup() {
                             )),
                         Field::make("color", "content_button_background", "Button Background Color")
                          ->set_conditional_logic(array(
-                                'relation' => 'OR',
+                                array(
+                                    'field' => 'content_type',
+                                    'value' => 'button', 
+                                    'compare' => '=', 
+                                ),
+                                'relation' => 'AND',
                                  array(
                                     'field' => 'content_button_color',
                                     'value' => 'custom', 

@@ -7,13 +7,19 @@ function carbon_print_layout($layout) {//view fields
 
 	$row_vertical_align = $layout['vertical_align'] ? 'flex-vertical-align' : null;
 	$row_mobile_reverse_columns = $layout['mobile_reverse_columns'] ? 'mobile-reverse-columns' : null;
+
+	$content_align = $layout['content_align'] ? $layout['content_align'] : null;
 	?>
 	<?php if ( $layout['_type'] === '_dynamic_section' ): ?>
 		<div class="section <?= sprintf('%s %s %s %s',$section_full_width_section,$section_content_contained,$section_mobile_center_text,$section_class); ?> " style="<?=cfpb_bg_image($layout['section_background_image'])?>">
 				<?php if ( $layout['section_heading'] ): ?>
 					<div class="row row-heading">
-						<div class="col-sm-12 <?=cfpb_heading_alignment($layout['content_align']);?>">
-							<?='<'.$layout['heading_tag'].'>';?><?= $layout['section_heading']; ?><?='</'.$layout['heading_tag'].'>';?>
+						<div class="col-sm-12 <?= sprintf('%s',$content_align); ?>">
+							<?= sprintf('<%s>%s</%s>',
+								!empty($layout['section_heading_tag']) ? $layout['section_heading_tag'] : null,
+								!empty($layout['section_heading']) ? $layout['section_heading'] : null,
+								!empty($layout['section_heading_tag']) ? $layout['section_heading_tag'] : null
+							)?>
 						</div>
 					</div>
 				<?php endif; ?>
@@ -23,12 +29,14 @@ function carbon_print_layout($layout) {//view fields
 					<?php foreach($columns as $column ): ?>
 						<?php $max_columns = count($columns);
 							if($max_columns === 5) {
-								$col_class = 15;
+								$col_number = 15;
 							} else {
-								$col_class = (12/$max_columns);
+								$col_number = (12/$max_columns);
 							}
 							$column_five_columns = $max_columns === 5 ? 'col-sm-2 ' : null;
-							$column_col_number = $col_class ? 'col-sm-'.$col_class : null;
+							$column_col_number_field = $col_number ? 'col-sm-'.$col_number : null;
+							$column_class_override = array_key_exists('column_class_override', $column) ? $column['column_class_override'] : null;
+							$column_col_number = $column_class_override != 'yes' ? $column_col_number_field : null;
 							$column_col_class = $column['column_class'] ? $column['column_class'] : null;
 							?>
 						<div class="<?= sprintf('%s %s %s',$column_five_columns,$column_col_number,$column_col_class); ?>">
