@@ -24,7 +24,7 @@ function carbon_page_builder_fields_setup() {
                 Field::make('checkbox', 'mobile_reverse_columns')->set_width(20),
                 Field::make('text', 'section_class')->set_width(50),
                 Field::make('image', 'section_background_image')->set_value_type( 'url' )->set_width(50),
-                Field::make("separator", "section_heading"),
+                Field::make("separator", "section_heading_seperator"),
                 Field::make('text', 'section_heading'),
                 Field::make("select", "heading_tag", "Heading Tag")
                 ->set_width(50)
@@ -44,7 +44,7 @@ function carbon_page_builder_fields_setup() {
                     'center' => 'Center',
                     'right' => 'Right',
                 )),
-                Field::make("separator", "Columns"),
+                Field::make("separator", 'columns_seperator',"Columns"),
                 Field::make( 'complex', 'columns' )
                  ->set_layout('tabbed-vertical')
                  ->set_max(6)
@@ -70,6 +70,9 @@ function carbon_page_builder_fields_setup() {
                                 'button' => 'Button',
                                 'query' => 'Post Query',
                                 'timeline' => 'Timeline',
+                                'space' => 'Space',
+                                'textarea' => 'Textarea',
+                                'heading' => 'Heading'
                             )),
                         Field::make( 'rich_text', 'content_text' )
                             ->set_conditional_logic(array(
@@ -81,6 +84,21 @@ function carbon_page_builder_fields_setup() {
                                 ),
                             )),
                         Field::make( 'image', 'content_image' )->set_value_type( 'url' )
+                            ->set_conditional_logic(array(
+                                'relation' => 'OR',
+                                 array(
+                                    'field' => 'content_type',
+                                    'value' => 'image', 
+                                    'compare' => '=', 
+                                ),
+                            )),
+                          Field::make( 'select', 'content_image_size', "Image Size" )
+                           ->add_options(array(
+                                'thumnnail' => 'Thumbnail',
+                                'medium' => 'Medium',
+                                'large' => 'Large',
+                                'full' => 'Full'
+                            ))
                             ->set_conditional_logic(array(
                                 'relation' => 'OR',
                                  array(
@@ -125,16 +143,28 @@ function carbon_page_builder_fields_setup() {
                                     'compare' => '=', 
                                 ),
                             )),
-                        Field::make("color", "crb_btn_background", "Button Background Color")
+                        Field::make('select', 'content_button_color',"Button Color")
+                            ->add_options(array(
+                                'custom' => 'Custom',
+                            ))
+                            ->set_conditional_logic(array(
+                                'relation' => 'OR',
+                                 array(
+                                    'field' => 'content_type',
+                                    'value' => 'button', 
+                                    'compare' => '=', 
+                                ),
+                            )),
+                        Field::make("color", "content_button_background", "Button Background Color")
                          ->set_conditional_logic(array(
                                 'relation' => 'OR',
                                  array(
-                                    'field' => 'content_type',
-                                    'value' => 'button', 
+                                    'field' => 'content_button_color',
+                                    'value' => 'custom', 
                                     'compare' => '=', 
                                 ),
                             )),
-                        Field::make('text', 'button_class')
+                        Field::make('text', 'content_button_text',"Button Text")
                             ->set_conditional_logic(array(
                                 'relation' => 'OR',
                                  array(
@@ -143,7 +173,7 @@ function carbon_page_builder_fields_setup() {
                                     'compare' => '=', 
                                 ),
                             )),
-                        Field::make('text', 'button_text')
+                        Field::make('text', 'content_button_link',"Button Link")
                             ->set_conditional_logic(array(
                                 'relation' => 'OR',
                                  array(
@@ -152,12 +182,64 @@ function carbon_page_builder_fields_setup() {
                                     'compare' => '=', 
                                 ),
                             )),
-                        Field::make('text', 'button_link')
+                        Field::make('select', 'content_button_size',"Button Size")
+                            ->add_options(array(
+                                'btn-sm' => 'Small',
+                                'btn-md' => 'Medium',
+                                'btn-lg' => 'Large',
+                            ))
                             ->set_conditional_logic(array(
                                 'relation' => 'OR',
                                  array(
                                     'field' => 'content_type',
                                     'value' => 'button', 
+                                    'compare' => '=', 
+                                ),
+                            )),
+                        Field::make('text', 'content_space')
+                            ->set_conditional_logic(array(
+                                'relation' => 'OR',
+                                 array(
+                                    'field' => 'content_type',
+                                    'value' => 'space', 
+                                    'compare' => '=', 
+                                ),
+                            )),
+                        Field::make('textarea', 'content_textarea_text', "Textarea Content")
+                            ->set_conditional_logic(array(
+                                'relation' => 'OR',
+                                 array(
+                                    'field' => 'content_type',
+                                    'value' => 'textarea', 
+                                    'compare' => '=', 
+                                ),
+                            )),
+                        Field::make('select', 'content_heading_tag', "Heading Tag")
+                            ->add_options(array(
+                                'h1' => 'h1',
+                                'h2' => 'h2',
+                                'h3' => 'h3',
+                                'h4' => 'h4',
+                                'h5' => 'h5',
+                                'h6' => 'h6',
+                                'p' =>  'p',
+                                'span' => 'span',
+                                'div' => 'div'
+                            ))
+                            ->set_conditional_logic(array(
+                                'relation' => 'OR',
+                                 array(
+                                    'field' => 'content_type',
+                                    'value' => 'heading', 
+                                    'compare' => '=', 
+                                ),
+                            )),
+                        Field::make('text', 'content_heading_text', "Heading Text")
+                            ->set_conditional_logic(array(
+                                'relation' => 'OR',
+                                 array(
+                                    'field' => 'content_type',
+                                    'value' => 'heading', 
                                     'compare' => '=', 
                                 ),
                             )),
