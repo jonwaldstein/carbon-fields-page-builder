@@ -18,7 +18,7 @@ if (!empty($accordions )): ?>
 			    </a>
 			    <div id="collapse-<?= $accordion_id; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 					<div class="panel-body">
-						<?= cfpb_carbon_parse_shortcodes($accordion['content']); ?>		        
+						<?= !empty(($accordion['content'])) ? wpautop( do_shortcode( $accordion['content'] ) ) : null ?>
 					</div>
 			    </div>
 			</div><!--panel-->

@@ -44,7 +44,7 @@ function carbon_print_layout($layout) {//view fields
 							<?php if (!empty($content)): ?>
 								<?php foreach($content as $content_block ): ?>
 									<?php if ($content_block['content_type'] === 'text'): ?>
-										<?= cfbp_carbon_parse_shortcodes($content_block['content_text']); ?>
+										<?= !empty(($content_block['content_text'])) ? wpautop( do_shortcode( $content_block['content_text'] ) ) : null ?>
 									<?php endif; ?>
 									<?php if ($content_block['content_type'] === 'textarea'): ?>
 										<?= sprintf('<p>%s</p>',
