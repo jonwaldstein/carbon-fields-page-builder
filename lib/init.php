@@ -13,12 +13,12 @@ function enable_output_from_plugin($content)
             if (carbon_get_theme_option('enable_output_from_plugin')==='yes'){
                 if ( function_exists( 'carbon_display_page_builder' ) ) {
                     $post_meta = carbon_display_page_builder();
+                    $cleaned_meta = apply_filters('the_content', $post_meta);
+                    add_action('the_content', 'enable_output_from_plugin'); //REENABLE FROM WITHIN
+                    return $cleaned_meta . $content;
                 }
             }
         }
-    $cleaned_meta = apply_filters('the_content', $post_meta);
-    add_action('the_content', 'enable_output_from_plugin'); //REENABLE FROM WITHIN
-    return $cleaned_meta . $content;
 }
 add_action('the_content', 'enable_output_from_plugin');
 
